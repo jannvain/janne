@@ -1,0 +1,30 @@
+  <!-- script type="text/ng-template" id="myModalContent.html" -->
+  <div class="myModal">
+    <div class="modal-header">
+      <h1 class="modal-title">
+        {{items.title}}
+        <div class="modButton pull-right" ng-click="cancel()">
+          <i class="fa fa-times"></i>
+      </div>
+      </h1>
+
+    </div>
+    <div class="modal-body">
+      <p ng-repeat="description in items.descriptions" ng-bind-html="description">{{description}}</p>
+      <!--ul>
+        <li ng-repeat="item in items">
+          <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+        </li>
+      </ul>
+      Selected: <b>{{ selected.item }}</b-->
+    </div>
+    <!--div class="navme">Button</div-->
+
+    <div class="modal-footer">
+      <!--button class="btn btn-primary" type="button" ng-click="cancel()">OK</button-->
+
+    </div>
+  </div>
+  <!-- /script -->
+
+

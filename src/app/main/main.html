@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="virtualImg" orientdep-Image>
+    <img ng-src="{{vm.bgImage}}"  landscapeImage="{{vm.landscapeImage}}" portraitImage="{{vm.portraitImage}}"/>
+
+
+
+  </div>
+
+
+  <div class="myButtonLayer">
+    <div ng-repeat="jItem in vm.jItems | orderBy:'rank'">
+      <a href="" ng-click="vm.open(jItem)">
+        <div j-Item-Size i-Items-length="5" j-Item-index="$index" class="jItemOuter"
+             ng-style="{'left':myLeft, 'top':'auto',
+             'width':myWidth, 'height':myHeight, 'right': 'auto', 'bottom': myTop,
+              'font-size': myFontSize
+             }">
+          <div class="jItem"
+               ng-style="{'background-image': 'url(assets/images/' + jItem.logo + ')'}">
+            <div class="caption">
+              <h1> {{$index}}. {{jItem.title}} </h1>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!--         rgba(77,197,248, 0.5)  4dc5f8   'background-image': 'radial-gradient(circle, ' + '#5fbf2d' + ' 80%, ' + 'transparent' + ' 99%)', -->
+
+
+
+</div>
+
+<div class="infoSection">
+  <p>Janne Vainio</p>
+</div>
+
+
+<div class="respStar">
+     <span class="fa-stack fa-lg">
+       <i class="fa fa-star fa-stack-2x"></i>
+       <strong class="fa-stack-1x fa-inverse">
+         <div class="respStarText">
+           <p>I'm responsive<br>Try me!</p>
+         </div>
+       </strong>
+     </span>
+</div>

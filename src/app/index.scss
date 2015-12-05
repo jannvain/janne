@@ -1,0 +1,480 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+
+$itemSize: 0;
+//$primaryColor: rgba(255,154,0, 1.0);
+$primaryColor: rgba(0,151,255, 1.0);
+
+//$primaryColorB: rgba(255,207,135, 1.0);
+$primaryColorB: rgba(0,128,216, 1.0);
+
+//$primaryColorBl: rgba(255,222,171, 1.0);
+$primaryColorBl: rgba(136,207,255, 1.0);
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+
+html{
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html *, html *:before, html *:after {
+  box-sizing: inherit;
+}
+
+body{
+  position: relative;
+  background: #cccccc;
+ // bacground-image: radial-gradient(transparent 70%, #f00 90%);
+
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  padding: 3%;
+
+  h1, h2, h3, h4, h5, p {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: inherit;
+  }
+  //overflow:scroll;
+
+  .modal-open{
+    oveflow: auto;
+    background: transparent;
+
+
+  }
+  .modal-body{
+    background: transparent;
+  }
+}
+
+
+.innerBody{
+  margin: auto auto;
+  background: #ffffff;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  max-width:1280px;
+
+  height:100%;
+  //height: 80%;
+  //min-height: 80%;
+  overflow: visible;
+
+  -webkit-box-shadow: 5px 5px 5px #777;
+  -moz-box-shadow: 5px 5px 5px #777;
+  box-shadow: 5px 5px 5px #777;
+
+
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  width:auto;
+  height:auto;
+  background-color:blue;
+}
+
+.respStar{
+  position: fixed;
+  top:auto;
+  left: -0.8em;
+  bottom: 3.5em;
+  width: 15%;
+  height: 10%;
+  color: $primaryColor; // #5fbf2d; //#d82dd0;//f85f0b
+  text-align:center;
+  margin: 0;
+  padding:0;
+  font-size: 16px;
+  i{
+    font-size: 5em;
+  }
+  .respStarText{
+    margin:0;
+    padding:0;
+    text-align:center;
+    width:5em;
+    margin-left:-0.2em;
+
+    margin-top:1.8em;
+  }
+  p{
+    word-wrap: normal;
+    font-size: 0.5em;
+    line-height: 1.5em;
+    color: #ffffff;
+    text-align:center;
+  }
+}
+
+.myButtonLayer{
+  position: absolute;
+  top:0;
+  bottom:8em;
+  left:0;
+  right:0;
+}
+.virtualImg{
+  margin: 0;
+  padding:0;
+  position: absolute;
+  top:0;
+  //width:auto;
+  //height:16em;
+  //width:auto;
+  bottom: 8em;
+  //height:70%;
+  left:0;
+  right:0;
+  border: 15px solid #fff;
+  overflow: hidden;
+  text-align: center;
+  box-sizing: content-box;
+  img{
+    margin: 0;
+    height:100%;
+    //width: 100%;
+    //max-height:720px;
+    margin-left:-45%;
+  }
+}
+
+.infoSection{
+  margin: 0 auto;
+  padding:0;
+  position: absolute;
+
+  bottom:0;
+  left: 0;
+  right: 0;
+  height:8em;
+  //line-height: 4em;
+  //vertical-align: middle;
+  text-align: center;
+
+  p{
+    text-align: center;
+    padding:0;
+    margin:0;
+    width: 100%;
+    font-size: 4.0em;
+    color: #444;
+    color: $primaryColor;
+    font-family: 'Indie Flower', cursive;
+
+  }
+}
+
+
+.jItemOuter{
+  position: absolute;
+  width: $itemSize;
+  //height: $itemSize;
+  //max-width: 320px;
+  //max-height: 320px;
+  background: $primaryColor;
+  border-radius: 100%;
+  //bacground-image: radial-gradient(#ddd 70%, transparent 72%);
+  box-shadow: 1px 1px  2px 2px rgba(60, 60, 60, 0.4);
+  cursor: pointer;
+
+  border-top: 1px solid #777;
+  border-left: 1px solid #666;
+
+  border-bottom: 1px solid #666;
+  border-right: 1px solid #666;
+border:1px solid $primaryColorB;
+  border-top: 1px solid $primaryColorBl;
+  border-left: 1px solid $primaryColorBl;
+
+  border-bottom: 1px solid $primaryColorBl;
+  border-right: 1px solid $primaryColorBl;
+}
+
+.jItemOuter:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.jItem:hover{
+  box-shadow: inset 0 0 15px rgba(255, 255, 40, 1.0);
+
+}
+.jItem:active{
+  // 7bd82f
+  box-shadow: inset 0 0 25px rgba(123, 216, 47, 1.0);
+}
+
+.jItemOuter:hover{
+  box-shadow: 0 0 15px rgba(255, 255, 40, 1.0);
+
+}
+.jItemOuter:active{
+  // 7bd82f
+  box-shadow: 0 0 25px rgba(123, 216, 47, 1.0);
+
+}
+
+.jItem {
+  position: absolute;
+  background-size: cover;
+  border-radius: 100%;
+  top: 10%;
+  left:10%;
+  width:80%;
+  height: 80%;
+  bottom:auto;
+  right: auto;
+  border-top: 1px solid #666;
+  border-left: 1px solid #666;
+  border-right: 1px solid #555;
+
+  border-bottom: 1px solid #555;
+
+  box-shadow: inset 3px 3px 6px #666;
+
+  h1{
+    display:block;
+    margin-top:47%;
+    color: rgba(250,250,250,1.0);
+    vertical-align: middle;
+    text-align: center;
+    line-height:100%;
+    vertical-align: middle;
+    font-size:inherit;
+    //margin: 0;
+    padding: 0;
+    text-shadow:
+        -1px -1px 0 #333,
+          1px -1px 0 #333,
+          -1px 1px 0 #333,
+          1px 1px 0 #333;
+  }
+}
+
+
+@media only screen and (max-width: 360px) {
+  .innerBody {
+    background-size: contain;
+    background-repeat:no-repeat;
+  }
+
+}
+@media only screen and (orientation:portrait) {
+  .virtualImg {
+    img{
+      margin-left: -45%;
+    }
+  }
+  @media only screen and (max-width: 320px){
+    .virtualImg {
+      img{
+        margin-left: -60%;
+      }
+    }
+  }
+  @media only screen and (max-width: 240px){
+    .virtualImg {
+      img{
+        margin-left: -80%;
+      }
+    }
+  }
+  }
+
+
+@media only screen and (orientation:landscape) {
+
+body{
+  padding-top: 0;
+  padding-left: 0;
+
+}
+
+  .jItemOuter{
+    width:0;
+    h1{
+      font-size:inherit;
+    }
+  }
+
+  .myButtonLayer{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:8em;
+  }
+
+
+  .virtualImg {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 8em;
+    text-align: left;
+    border: 10px solid #fff;
+    img{
+      height:100%;
+      //height:auto;
+      margin: 0;
+    }
+
+  }
+
+  .infoSection {
+    top:0;
+    bottom:0;
+    //bottom: 0;
+    left: auto;
+    right: 0;
+    width: 8em;
+    height:100%;
+    text-align:center;
+
+    p {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      margin:0;
+      padding:0;
+      text-align:center;
+      vertical-align:middle;
+      white-space: nowrap;
+      //display: block;
+      transform: rotate(90deg);
+      transform-origin: 0% 0%;
+      font-size: 4.0em;
+
+
+    }
+  }
+}
+/*
+@media only screen and (min-width: 50px)   {  body  { font-size:0.5em;  } }
+@media only screen and (min-width: 100px)  {  body  { font-size:0.6em;  } }
+@media only screen and (min-width: 200px)  {  body  { font-size:0.65em;  } }
+@media only screen and (min-width: 300px)  {  body  { font-size:0.65em;  } }
+@media only screen and (min-width: 400px)  {  body  { font-size:0.65em;  } }
+@media only screen and (min-width: 500px)  {  body  { font-size:0.65em;  } }
+@media only screen and (min-width: 600px)  {  body  { font-size:1.2em;  } }
+@media only screen and (min-width: 700px)  {  body  { font-size:1.2em;  } }
+@media only screen and (min-width: 800px)  {  body  { font-size:1.4em;  } }
+@media only screen and (min-width: 900px)  {  body  { font-size:1.6em;  } }
+@media only screen and (min-width: 1000px) {  body  { font-size:1.7em;  } }
+@media only screen and (min-width: 1100px) {  body  { font-size:1.9em;  } }
+@media only screen and (min-width: 1200px) {  body  { font-size:2.0em;  } }
+@media only screen and (min-width: 1300px) {  body  { font-size:2.1em;  } }
+@media only screen and (min-width: 1400px) {  body  { font-size:2.1em;  } }
+@media only screen and (min-width: 1500px) {  body  { font-size:2.2em;  } }
+@media only screen and (min-width: 1500px) {  body  { font-size:2.2em;  } }
+@media only screen and (min-width: 1600px) {  body  { font-size:2.2em;  } }
+@media only screen and (min-width: 1700px) {  body  { font-size:2.2em;  } }
+*/
+.myModal{
+  overflow:scroll;
+  background-image: url('../assets/images/paper2.png');
+  background-repeat: repeat;
+  border-radius: 5px;
+  //background: transparent;
+
+  .modalImage{
+
+    margin: 0 auto;
+    width:100%;
+    border: 2px solid #333;
+
+  }
+  h1{
+    font-size:1.5em;
+  }
+  p{
+    font-size:1.2em;
+    font-weight: normal;
+    font-style: normal;
+  }
+  .high{
+    color:#018ee2;
+    font-style: italic;
+  }
+  .high2{
+    color:#0b9f43;
+    font-style: italic;
+  }
+}
+
+.navme, .modButton {
+  display: block;
+  background-color: #f7f7f7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
+
+  color: #a7a7a7;
+  margin: 36px;
+  width: 144px;
+  height: 144px;
+  position: relative;
+  text-align: center;
+  line-height: 144px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+}
+.modButton{
+  .fa{
+    font-size: 1.2em;
+  }
+  line-height: 1.6em;
+  vertical-align:middle;
+  padding:0px;
+
+  padding-top:0px;
+  margin: 0px;
+  color: #14c138;
+  width: 1.6em;
+  height: 1.6em;
+  position: relative;
+  text-align: center;
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
