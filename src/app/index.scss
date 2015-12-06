@@ -14,14 +14,22 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 
 
 $itemSize: 0;
+$polaroidMargin: 5%;
+$sectionHeight: 20%;
+$sectionHeightL: 15%;
+
 //$primaryColor: rgba(255,154,0, 1.0);
 $primaryColor: rgba(0,151,255, 1.0);
+$primaryColorL: rgba(0,151,255, 1.0);
 
 //$primaryColorB: rgba(255,207,135, 1.0);
 $primaryColorB: rgba(0,128,216, 1.0);
 
 //$primaryColorBl: rgba(255,222,171, 1.0);
 $primaryColorBl: rgba(136,207,255, 1.0);
+
+//$primaryColorB: rgba(0,151,255, 1.0);
+//$primaryColorBl: rgba(0,151,255, 1.0);
 
 .browsehappy {
   margin: 0.2em 0;
@@ -43,74 +51,80 @@ html{
 }
 html *, html *:before, html *:after {
   box-sizing: inherit;
+  -webkit-text-size-adjust: 100%;
+
 }
 
 body{
   position: relative;
   background: #cccccc;
  // bacground-image: radial-gradient(transparent 70%, #f00 90%);
-
   height: 100%;
   min-height: 100%;
   width: 100%;
   overflow: hidden;
-  padding: 0;
   margin: 0;
-  padding: 3%;
-
+  padding: 0;
   h1, h2, h3, h4, h5, p {
     font-family: "Open Sans", sans-serif;
     font-weight: 800;
     font-style: italic;
     font-size: inherit;
   }
-  //overflow:scroll;
-
-  .modal-open{
-    oveflow: auto;
-    background: transparent;
-
-
-  }
-  .modal-body{
-    background: transparent;
-  }
 }
 
 
 .innerBody{
-  margin: auto auto;
+  //margin: auto auto;
   background: #ffffff;
   padding: 0;
-  position: relative;
-  width: 100%;
+  position: absolute;
+  //width: 100%;
   max-width:1280px;
-
-  height:100%;
+  top: 10px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  //height:100%;
   //height: 80%;
   //min-height: 80%;
-  overflow: visible;
+  overflow: hidden;
 
   -webkit-box-shadow: 5px 5px 5px #777;
   -moz-box-shadow: 5px 5px 5px #777;
   box-shadow: 5px 5px 5px #777;
 
+}
+.container{
+  position: absolute;
+  //width: 100%;
+  top: $polaroidMargin;
+  left:$polaroidMargin;
+  width:100% - $sectionHeightL -$polaroidMargin;
+  right:auto;
+  bottom:$polaroidMargin;
+  background-image: url('../assets/images/me1280gray.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* scale bg image proportionately */
+  background-size: cover;
 
+  .myMask{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(248,152,7,0.3);
+  }
 }
 
-.container {
-  margin: 0;
-  padding: 0;
-  width:auto;
-  height:auto;
-  background-color:blue;
-}
 
 .respStar{
   position: fixed;
   top:auto;
-  left: -0.8em;
-  bottom: 3.5em;
+  left: 0.1em;
+  bottom: 4.5em;
   width: 15%;
   height: 10%;
   color: $primaryColor; // #5fbf2d; //#d82dd0;//f85f0b
@@ -140,60 +154,27 @@ body{
 }
 
 .myButtonLayer{
-  position: absolute;
-  top:0;
-  bottom:8em;
-  left:0;
+  position:absolute;
+  top:3px;
+  bottom:auto;
+  left:auto;
   right:0;
-}
-.virtualImg{
-  margin: 0;
-  padding:0;
-  position: absolute;
-  top:0;
-  //width:auto;
-  //height:16em;
-  //width:auto;
-  bottom: 8em;
-  //height:70%;
-  left:0;
-  right:0;
-  border: 15px solid #fff;
-  overflow: hidden;
-  text-align: center;
-  box-sizing: content-box;
-  img{
-    margin: 0;
-    height:100%;
-    //width: 100%;
-    //max-height:720px;
-    margin-left:-45%;
-  }
+  height:99%;
+  width:100%;
 }
 
 .infoSection{
-  margin: 0 auto;
   padding:0;
+  margin: 0;
   position: absolute;
 
-  bottom:0;
-  left: 0;
-  right: 0;
-  height:8em;
-  //line-height: 4em;
-  //vertical-align: middle;
-  text-align: center;
-
-  p{
-    text-align: center;
+  p {
     padding:0;
     margin:0;
-    width: 100%;
-    font-size: 4.0em;
-    color: #444;
-    color: $primaryColor;
     font-family: 'Indie Flower', cursive;
-
+    font-size: 2.5em;
+    line-height:1;
+    color: $primaryColor;
   }
 }
 
@@ -204,10 +185,10 @@ body{
   //height: $itemSize;
   //max-width: 320px;
   //max-height: 320px;
-  background: $primaryColor;
+  background: $primaryColorL;
   border-radius: 100%;
   //bacground-image: radial-gradient(#ddd 70%, transparent 72%);
-  box-shadow: 1px 1px  2px 2px rgba(60, 60, 60, 0.4);
+  box-shadow: 1px 1px  1px 1px rgba(60, 60, 60, 0.4);
   cursor: pointer;
 
   border-top: 1px solid #777;
@@ -252,10 +233,10 @@ border:1px solid $primaryColorB;
   position: absolute;
   background-size: cover;
   border-radius: 100%;
-  top: 10%;
-  left:10%;
-  width:80%;
-  height: 80%;
+  top: 6%;
+  left:6%;
+  width:88%;
+  height: 88%;
   bottom:auto;
   right: auto;
   border-top: 1px solid #666;
@@ -286,43 +267,35 @@ border:1px solid $primaryColorB;
 }
 
 
-@media only screen and (max-width: 360px) {
-  .innerBody {
-    background-size: contain;
-    background-repeat:no-repeat;
-  }
-
-}
 @media only screen and (orientation:portrait) {
-  .virtualImg {
-    img{
-      margin-left: -45%;
+
+  .respStar{
+    bottom: 8.0em;
+
+  }
+  .container {
+    right: $polaroidMargin;
+    bottom: $sectionHeight;
+  }
+  .infoSection{
+    top: auto;
+    height: $sectionHeight;
+    bottom:0;
+    left: 0;
+    right: 0;
+    p{
+      text-align:center;
+      //line-height: 2em;
+      padding-top:10%;
+      @media only screen and (min-width: 480px)   {font-size:3.5em;  }
+      @media only screen and (max-width: 300px)   {font-size:2.0em;  }
+      @media only screen and (max-width: 240px)   {font-size:1.6em;  }
+
     }
   }
-  @media only screen and (max-width: 320px){
-    .virtualImg {
-      img{
-        margin-left: -60%;
-      }
-    }
-  }
-  @media only screen and (max-width: 240px){
-    .virtualImg {
-      img{
-        margin-left: -80%;
-      }
-    }
-  }
-  }
-
-
-@media only screen and (orientation:landscape) {
-
-body{
-  padding-top: 0;
-  padding-left: 0;
 
 }
+@media only screen and (orientation:landscape) {
 
   .jItemOuter{
     width:0;
@@ -331,54 +304,44 @@ body{
     }
   }
 
-  .myButtonLayer{
-    position: absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:8em;
-  }
-
-
-  .virtualImg {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 8em;
-    text-align: left;
-    border: 10px solid #fff;
-    img{
-      height:100%;
-      //height:auto;
-      margin: 0;
-    }
-
-  }
-
   .infoSection {
-    top:0;
+    top: 0;
     bottom:0;
-    //bottom: 0;
     left: auto;
+    width: $sectionHeightL;
     right: 0;
-    width: 8em;
-    height:100%;
-    text-align:center;
 
-    p {
+    //text-align:center;
+    //vertical-align:middle;
+
+    .infoCenter{
       position: absolute;
-      top: 30%;
-      left: 50%;
-      margin:0;
-      padding:0;
-      text-align:center;
-      vertical-align:middle;
-      white-space: nowrap;
-      //display: block;
-      transform: rotate(90deg);
-      transform-origin: 0% 0%;
-      font-size: 4.0em;
 
+
+      //width:150%;
+      overflow:visible;
+      text-align:center;
+      top: 50%;
+      transform: translateY(-50%);
+
+    }
+    p {
+      //transform-origin: 50% 100%;
+      transform: rotate(90deg);
+      text-align:left;
+      padding-bottom:0%;
+      padding-top:60%;
+
+      line-height:1;
+      font-size: 3.0em;
+      white-space: nowrap;
+      //transform-origin: 50% 100%;
+
+
+      @media only screen and (max-width: 540px)   {font-size:1.5em;  }
+      @media only screen and (max-width: 420px)   {font-size:1.2em;  }
+      @media only screen and (max-width: 360px)   {font-size:1.0em;  }
+      @media only screen and (max-width: 300px)   {font-size:0.7em;  }
 
     }
   }

@@ -26,78 +26,134 @@
         var myC = 1.0;
         var myK = 1.0;
         var myK0 = 1.0;
-
+        var myXt;
+        var myYt;
+        var myXb;
+        var myYb;
         var myBMinusK = myB - myK;
+        var aRatio;
 
+
+       var setParameters = function(areaWidth, areaHeight){
+
+         // Point (1,0), curves and coordinates relate bottom right
+         myXb = 1.0;
+         myYb = 0.0;
+         // Point for curve to cross y-axis (top) and coordinates top left
+         myXt = 0;
+         myYt = areaHeight/areaWidth;
+         myYt = areaHeight/areaWidth;
+
+         // Line slope from  point top to bottom
+         myK0 = (myYb - myYt)/(myXb-myXt);
+         // Slope for perpendicular line to cross the curve
+         myK = -1/myK0;
+
+         myA=myK0;
+         myB=0;
+         myC = -myK0;
+
+         myBMinusK = myB - myK;
+         aRatio = areaHeight/areaWidth;
+
+         //$log.debug("k0 " + myK0 + " k " + myK + "myxt " + myXt);
+       }
+        setParameters(768, 1024);
 
         /* Normalized calculation in a unit rectancle */
+
 
         scope.getXYCoordinates = function(index, maxIndex){
 
           var xyPoint = {'x': 0, 'y':0};
-          var y = (1 - myK0*(index/4.0));
+          var y = (myYt + myK0*(index/4.0));
           var x = (index/4.0);
 
 
           return xyPoint;
         }
 
-        scope.getLeft = function(index, minDim, rel, offset){
-          // minDim = max scale of 1
+        scope.getLeft = function(index){
+          var y = (myYt + myK0*(index/4.0));
           var x = (index/4.0);
-          var y = (1 - myK0*(index/4.0));
 
           var xp = ( (myK - myB) - /*important* on the positive side of x?????*/
             Math.sqrt( myBMinusK * myBMinusK - 4*myA *( myK*x -y + myC)  ) ) / ( 2 * myA);
 
-//          $log.debug("X: "+ "( " + x + ", " + xp + ")");
+          //$log.debug("X: "+ "( " + x + ", " + xp + ")");
 
-          return xp*minDim;
+          return xp<0 ? x : xp;
 
         }
 
 
-        scope.getTop = function(index, minDim, rel, offset){
-          var y = (1 - myK0*(index/4.0));
+        scope.getTop = function(index){
+          var y = (myYt + myK0*(index/4.0));
           var x = (index/4.0);
-
+          //$log.debug(myYt);
           var xp = ( (myK - myB) -
-            Math.sqrt( (myB - myK) * (myB - myK) - 4*myA *( myK*x -y + myC)  ) ) / ( 2 * myA)
+            Math.sqrt( myBMinusK * myBMinusK - 4*myA *( myK*x -y + myC)  ) ) / ( 2 * myA)
 
           var yp = myK * (xp - x) + y;
-          $log.debug("( " + y + ", " + yp + ")" + "Ind " + index);
+          //$log.debug("( " + y + ", " + yp + ")" + "Ind " + index);
+          //return y;
 
-          return yp*minDim;
+          return yp<0 ? y : yp;
+
 
         }
 
         var setDim = function(args) {
           // $log.debug("Item resize");
 
-          var maxDim = args.elWidth > args.elHeight ? args.elWidth : args.elHeight;
-          scope.myHeight = maxDim / 6 + "px";
-          scope.myWidth = maxDim / 6 + "px";
+          var areaWidth = args.elWidth;
+          var areaHeight = args.elHeight;
 
-          scope.myFontSize = maxDim / 50 + "px";
+          var aDiv = 5.0;
+          var minDim = areaHeight < areaWidth ? areaHeight : areaWidth;
+          var maxDim = areaHeight >= areaWidth ? areaHeight : areaWidth;
+          var offsetX = (maxDim / aDiv);
+          var offsetY = (maxDim / aDiv);
 
-          var offsetX = (maxDim / 5);
-          var offsetY = (maxDim / 5);
-          var areaWidth = args.elWidth - offsetX;
-          var areaHeight = args.elHeight - offsetY;
-          var rel = areaHeight / areaWidth;
-          if (args.portrait){
-            myK = areaWidth / areaHeight;
-            myK0 = areaHeight / areaHeight;
+          var myHeight = (maxDim) / aDiv;
+          var myWidth = (maxDim) / aDiv;
+          var myFontSize = (maxDim) / (aDiv * 8);
+
+          minDim -= offsetX;
+          maxDim -= offsetY;
+          areaWidth -= offsetX;
+          areaHeight -= offsetY;
+
+          setParameters(areaWidth, areaHeight);
+
+          // x-scale is always 0..1 and y-scale adjust based on the aspect ratio
+          var myLeft = (scope.getLeft(scope.$index) * areaWidth);
+          var myTop = (scope.getTop(scope.$index) * areaWidth);
+
+          if (args.portrait && (myWidth >= areaWidth+offsetX)) {
+            myLeft = 0;
+            myWidth=areaWidth+offsetX;
+            myHeight=areaWidth+offsetY;
+
+            var myFontSize = myWidth / 10;
+
           }
-          else {
-          //  myK = areaHeight / areaWidth;
-          //  myK0 = -areaWidth/areaHeight;
+          else if (!args.portrait && (myHeight >= areaHeight+offsetY)) {
+            myTop =0;
+            myHeight = areaHeight+offsetY;
+            myWidth=areaHeight+offsetX;
+            var myFontSize = myWidth / 10;
+
           }
-          var xyPoint = scope.getXYCoordinates(scope.$index);
-          scope.myLeft = xyPoint.x;
-          scope.myTop = xyPoint.y;
-          scope.myLeft = (scope.getLeft(scope.$index, 1.0, rel, offsetX)*areaWidth) + "px";
-          scope.myTop = (scope.getTop(scope.$index,1.0, rel , offsetY)*areaHeight) + "px";
+
+
+
+          scope.myHeight = myHeight + 'px';
+          scope.myWidth = myWidth + 'px';
+          scope.myFontSize = myFontSize + 'px';
+          scope.myLeft = myLeft + 'px';
+          scope.myTop = myTop + "px";
+          // $log.debug(scope.$index+": "+"X= " + myLeft + " Y= ", myTop + "   "+areaHeight + " " + myWidth);
 
         }
         scope.$on('resize::itemResize', function (event, args) {

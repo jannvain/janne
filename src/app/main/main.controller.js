@@ -14,8 +14,8 @@
     var vm = this;
 
     vm.portrait = true;
-    vm.landscapeImage = '../assets/images/me1280landscaped.jpg';
-    vm.portraitImage = '../assets/images/me1280landscaped.jpg';
+    vm.landscapeImage = '../assets/images/me1280gray.jpg';
+    vm.portraitImage = '../assets/images/me1280gray.jpg';
 
     vm.bgImage = vm.portraitImage;
 
